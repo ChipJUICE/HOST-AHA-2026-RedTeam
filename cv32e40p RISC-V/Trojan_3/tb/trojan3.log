@@ -1,0 +1,52 @@
+VCD info: dumpfile trojan3.vcd opened for output.
+WARNING: /Users/juicekadai/Downloads/submission/Trojan_3/tb/../rtl/cv32e40p_load_store_unit.sv:421: value is unhandled for priority or unique case statement
+         Time: 0  Scope: tb_trojan3_store_corruption.dut
+T=0  req=0 we=0 addr=00000000 in_data=00000000  |  bus_wdata=00000000
+
+============================================================
+  PHASE 1: NORMAL STORES (pre-trigger baseline)
+============================================================
+T=50000  req=1 we=1 addr=10000000 in_data=dead1234  |  bus_wdata=dead1234
+T=56000  req=0 we=0 addr=10000000 in_data=dead1234  |  bus_wdata=dead1234
+  [PASS] T=66000  addr=0x10000000 data=0xDEAD1234 (byte1=0x12) -> unchanged  (bus=0xdead1234)
+T=70000  req=1 we=1 addr=100000a0 in_data=dead1234  |  bus_wdata=dead1234
+T=75000  req=0 we=1 addr=100000a0 in_data=dead1234  |  bus_wdata=dead1234
+T=76000  req=0 we=0 addr=100000a0 in_data=dead1234  |  bus_wdata=dead1234
+  [PASS] T=86000  addr[7:0]=0xA0 but byte1=0x12 (!=0xBE) -> unchanged  (bus=0xdead1234)
+T=90000  req=0 we=1 addr=10000000 in_data=deadbeef  |  bus_wdata=deadbeef
+T=96000  req=0 we=0 addr=10000000 in_data=deadbeef  |  bus_wdata=deadbeef
+  [PASS] T=106000  byte1=0xBE but addr[7:0]=0x00 (!=0xA0) -> unchanged  (bus=0xdeadbeef)
+
+============================================================
+  PHASE 2: TROJAN TRIGGER -- addr[7:0]==0xA0 AND byte1==0xBE
+============================================================
+  Intended: 0xDEAD_BEEF -> 0x200000A0
+T=110000  req=0 we=1 addr=200000a0 in_data=deadbeef  |  bus_wdata=deadbe10
+T=116000  req=0 we=0 addr=200000a0 in_data=deadbeef  |  bus_wdata=deadbeef
+  [PASS] T=126000  Low byte flipped: 0xDEADBEEF -> 0xDEADBE10 (0xEF^0xFF=0x10)  (bus=0xdeadbe10)
+  Intended: 0xCAFE_BE42 -> 0x000010A0
+T=130000  req=0 we=1 addr=000010a0 in_data=cafebe42  |  bus_wdata=cafebebd
+T=136000  req=0 we=0 addr=000010a0 in_data=cafebe42  |  bus_wdata=cafebe42
+  [PASS] T=146000  Low byte flipped: 0xCAFEBE42 -> 0xCAFEBEBD (0x42^0xFF=0xBD)  (bus=0xcafebebd)
+
+============================================================
+  PHASE 3: STEALTH CHECK -- control signals unmodified
+============================================================
+T=150000  req=0 we=1 addr=200000a0 in_data=deadbeef  |  bus_wdata=deadbe10
+  Processor-intended payload    : 0xdeadbeef
+  data_addr_o (bus)             : 0x200000a0  (NOT modified)
+  data_we_o (bus)               : 1          (NOT modified)
+  data_be_o (bus)               : 0xf         (NOT modified)
+  data_wdata_o (bus)            : 0xdeadbe10  (CORRUPTED)
+  [INFO] Processor believes it stored 0xDEADBEEF.
+         Memory actually received   0xDEADBE10.
+         Invisible without bus-level logic analysis.
+T=156000  req=0 we=0 addr=200000a0 in_data=deadbeef  |  bus_wdata=deadbeef
+
+============================================================
+  SUMMARY
+============================================================
+  PASSED: 5
+  FAILED: 0
+  >>> TROJAN-3 VERIFIED <<<
+/Users/juicekadai/Downloads/submission/Trojan_3/tb/tb_trojan3.sv:234: $finish called at 205000 (1ps)

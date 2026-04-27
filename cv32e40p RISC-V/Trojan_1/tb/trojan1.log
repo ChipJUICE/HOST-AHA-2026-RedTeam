@@ -1,0 +1,45 @@
+VCD info: dumpfile trojan1.vcd opened for output.
+T=0  csr_addr=340  csr_op=00  csr_wdata=00000000  m_irq_enable_o=0
+
+============================================================
+  PHASE 1: NORMAL OPERATION (pre-trigger baseline)
+============================================================
+T=50000  csr_addr=300  csr_op=01  csr_wdata=00000008  m_irq_enable_o=0
+T=55000  csr_addr=300  csr_op=01  csr_wdata=00000008  m_irq_enable_o=1
+T=56000  csr_addr=300  csr_op=00  csr_wdata=00000000  m_irq_enable_o=1
+  [PASS] T=66000  m_irq_enable_o HIGH after mstatus.MIE=1  (got=1)
+T=70000  csr_addr=340  csr_op=01  csr_wdata=deadbeef  m_irq_enable_o=1
+T=76000  csr_addr=340  csr_op=00  csr_wdata=00000000  m_irq_enable_o=1
+  [PASS] T=86000  m_irq_enable_o stays HIGH after MSCRATCH=0xDEADBEEF  (got=1)
+T=90000  csr_addr=340  csr_op=01  csr_wdata=12345678  m_irq_enable_o=1
+T=96000  csr_addr=340  csr_op=00  csr_wdata=00000000  m_irq_enable_o=1
+  [PASS] T=106000  m_irq_enable_o stays HIGH after MSCRATCH=0x12345678  (got=1)
+
+============================================================
+  PHASE 2: TROJAN TRIGGER -- MSCRATCH := 0xDEADC0DE
+============================================================
+T=110000  csr_addr=340  csr_op=01  csr_wdata=deadc0de  m_irq_enable_o=1
+T=115000  csr_addr=340  csr_op=01  csr_wdata=deadc0de  m_irq_enable_o=0
+T=116000  csr_addr=340  csr_op=00  csr_wdata=00000000  m_irq_enable_o=0
+  [PASS] T=126000  m_irq_enable_o FORCED LOW immediately  (got=0)
+
+============================================================
+  PHASE 3: PERSISTENCE -- latch survives all CSR writes
+============================================================
+T=130000  csr_addr=300  csr_op=01  csr_wdata=00000008  m_irq_enable_o=0
+T=136000  csr_addr=300  csr_op=00  csr_wdata=00000000  m_irq_enable_o=0
+  [PASS] T=146000  m_irq_enable_o stays LOW after mstatus re-write  (got=0)
+T=150000  csr_addr=340  csr_op=01  csr_wdata=ffffffff  m_irq_enable_o=0
+T=156000  csr_addr=340  csr_op=00  csr_wdata=00000000  m_irq_enable_o=0
+  [PASS] T=166000  m_irq_enable_o stays LOW after MSCRATCH=0xFFFFFFFF  (got=0)
+T=170000  csr_addr=340  csr_op=01  csr_wdata=00000000  m_irq_enable_o=0
+T=176000  csr_addr=340  csr_op=00  csr_wdata=00000000  m_irq_enable_o=0
+  [PASS] T=186000  m_irq_enable_o stays LOW after MSCRATCH=0x00000000  (got=0)
+
+============================================================
+  SUMMARY
+============================================================
+  PASSED: 7
+  FAILED: 0
+  >>> TROJAN-1 VERIFIED <<<
+/Users/juicekadai/Downloads/submission/Trojan_1/tb/tb_trojan1.sv:297: $finish called at 235000 (1ps)

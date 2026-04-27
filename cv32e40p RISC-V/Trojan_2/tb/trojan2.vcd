@@ -1,0 +1,634 @@
+$date
+	Mon Apr 20 20:19:38 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_trojan2_ra_hijack $end
+$var wire 32 ! rdata_c_o [31:0] $end
+$var wire 32 " rdata_b_o [31:0] $end
+$var wire 32 # rdata_a_o [31:0] $end
+$var parameter 32 $ ADDR_WIDTH $end
+$var parameter 32 % DATA_WIDTH $end
+$var reg 1 & clk $end
+$var reg 6 ' raddr_a_i [5:0] $end
+$var reg 6 ( raddr_b_i [5:0] $end
+$var reg 6 ) raddr_c_i [5:0] $end
+$var reg 1 * rst_n $end
+$var reg 1 + scan_cg_en_i $end
+$var reg 6 , waddr_a_i [5:0] $end
+$var reg 6 - waddr_b_i [5:0] $end
+$var reg 32 . wdata_a_i [31:0] $end
+$var reg 32 / wdata_b_i [31:0] $end
+$var reg 1 0 we_a_i $end
+$var reg 1 1 we_b_i $end
+$var integer 32 2 fail_count [31:0] $end
+$var integer 32 3 pass_count [31:0] $end
+$scope module dut $end
+$var wire 1 & clk $end
+$var wire 1024 4 mem_fp [1023:0] $end
+$var wire 6 5 raddr_a_i [5:0] $end
+$var wire 6 6 raddr_b_i [5:0] $end
+$var wire 6 7 raddr_c_i [5:0] $end
+$var wire 1 * rst_n $end
+$var wire 1 + scan_cg_en_i $end
+$var wire 6 8 waddr_a [5:0] $end
+$var wire 6 9 waddr_a_i [5:0] $end
+$var wire 6 : waddr_b [5:0] $end
+$var wire 6 ; waddr_b_i [5:0] $end
+$var wire 32 < wdata_a_i [31:0] $end
+$var wire 32 = wdata_b_i [31:0] $end
+$var wire 1 0 we_a_i $end
+$var wire 1 1 we_b_i $end
+$var wire 32 > we_b_dec [31:0] $end
+$var wire 32 ? we_a_dec [31:0] $end
+$var wire 32 @ rdata_c_o [31:0] $end
+$var wire 32 A rdata_b_o [31:0] $end
+$var wire 32 B rdata_a_o [31:0] $end
+$var parameter 32 C ADDR_WIDTH $end
+$var parameter 32 D DATA_WIDTH $end
+$var parameter 32 E FPU $end
+$var parameter 32 F NUM_FP_WORDS $end
+$var parameter 33 G NUM_TOT_WORDS $end
+$var parameter 32 H NUM_WORDS $end
+$var parameter 32 I ZFINX $end
+$var reg 1024 J mem [1023:0] $end
+$var reg 1 K trojan_ra_poison_q $end
+$scope begin gen_no_mem_fp_write $end
+$upscope $end
+$scope begin gen_rf[1] $end
+$var parameter 2 L i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[2] $end
+$var parameter 3 M i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[3] $end
+$var parameter 3 N i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[4] $end
+$var parameter 4 O i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[5] $end
+$var parameter 4 P i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[6] $end
+$var parameter 4 Q i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[7] $end
+$var parameter 4 R i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[8] $end
+$var parameter 5 S i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[9] $end
+$var parameter 5 T i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[10] $end
+$var parameter 5 U i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[11] $end
+$var parameter 5 V i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[12] $end
+$var parameter 5 W i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[13] $end
+$var parameter 5 X i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[14] $end
+$var parameter 5 Y i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[15] $end
+$var parameter 5 Z i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[16] $end
+$var parameter 6 [ i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[17] $end
+$var parameter 6 \ i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[18] $end
+$var parameter 6 ] i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[19] $end
+$var parameter 6 ^ i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[20] $end
+$var parameter 6 _ i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[21] $end
+$var parameter 6 ` i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[22] $end
+$var parameter 6 a i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[23] $end
+$var parameter 6 b i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[24] $end
+$var parameter 6 c i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[25] $end
+$var parameter 6 d i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[26] $end
+$var parameter 6 e i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[27] $end
+$var parameter 6 f i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[28] $end
+$var parameter 6 g i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[29] $end
+$var parameter 6 h i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[30] $end
+$var parameter 6 i i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_rf[31] $end
+$var parameter 6 j i $end
+$scope begin register_write_behavioral $end
+$upscope $end
+$upscope $end
+$scope begin gen_we_decoder[0] $end
+$var parameter 2 k gidx $end
+$upscope $end
+$scope begin gen_we_decoder[1] $end
+$var parameter 2 l gidx $end
+$upscope $end
+$scope begin gen_we_decoder[2] $end
+$var parameter 3 m gidx $end
+$upscope $end
+$scope begin gen_we_decoder[3] $end
+$var parameter 3 n gidx $end
+$upscope $end
+$scope begin gen_we_decoder[4] $end
+$var parameter 4 o gidx $end
+$upscope $end
+$scope begin gen_we_decoder[5] $end
+$var parameter 4 p gidx $end
+$upscope $end
+$scope begin gen_we_decoder[6] $end
+$var parameter 4 q gidx $end
+$upscope $end
+$scope begin gen_we_decoder[7] $end
+$var parameter 4 r gidx $end
+$upscope $end
+$scope begin gen_we_decoder[8] $end
+$var parameter 5 s gidx $end
+$upscope $end
+$scope begin gen_we_decoder[9] $end
+$var parameter 5 t gidx $end
+$upscope $end
+$scope begin gen_we_decoder[10] $end
+$var parameter 5 u gidx $end
+$upscope $end
+$scope begin gen_we_decoder[11] $end
+$var parameter 5 v gidx $end
+$upscope $end
+$scope begin gen_we_decoder[12] $end
+$var parameter 5 w gidx $end
+$upscope $end
+$scope begin gen_we_decoder[13] $end
+$var parameter 5 x gidx $end
+$upscope $end
+$scope begin gen_we_decoder[14] $end
+$var parameter 5 y gidx $end
+$upscope $end
+$scope begin gen_we_decoder[15] $end
+$var parameter 5 z gidx $end
+$upscope $end
+$scope begin gen_we_decoder[16] $end
+$var parameter 6 { gidx $end
+$upscope $end
+$scope begin gen_we_decoder[17] $end
+$var parameter 6 | gidx $end
+$upscope $end
+$scope begin gen_we_decoder[18] $end
+$var parameter 6 } gidx $end
+$upscope $end
+$scope begin gen_we_decoder[19] $end
+$var parameter 6 ~ gidx $end
+$upscope $end
+$scope begin gen_we_decoder[20] $end
+$var parameter 6 !" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[21] $end
+$var parameter 6 "" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[22] $end
+$var parameter 6 #" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[23] $end
+$var parameter 6 $" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[24] $end
+$var parameter 6 %" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[25] $end
+$var parameter 6 &" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[26] $end
+$var parameter 6 '" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[27] $end
+$var parameter 6 (" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[28] $end
+$var parameter 6 )" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[29] $end
+$var parameter 6 *" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[30] $end
+$var parameter 6 +" gidx $end
+$upscope $end
+$scope begin gen_we_decoder[31] $end
+$var parameter 6 ," gidx $end
+$upscope $end
+$upscope $end
+$scope task banner $end
+$upscope $end
+$scope task check32 $end
+$upscope $end
+$scope task reg_write_a $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11111 ,"
+b11110 +"
+b11101 *"
+b11100 )"
+b11011 ("
+b11010 '"
+b11001 &"
+b11000 %"
+b10111 $"
+b10110 #"
+b10101 ""
+b10100 !"
+b10011 ~
+b10010 }
+b10001 |
+b10000 {
+b1111 z
+b1110 y
+b1101 x
+b1100 w
+b1011 v
+b1010 u
+b1001 t
+b1000 s
+b111 r
+b110 q
+b101 p
+b100 o
+b11 n
+b10 m
+b1 l
+b0 k
+b11111 j
+b11110 i
+b11101 h
+b11100 g
+b11011 f
+b11010 e
+b11001 d
+b11000 c
+b10111 b
+b10110 a
+b10101 `
+b10100 _
+b10011 ^
+b10010 ]
+b10001 \
+b10000 [
+b1111 Z
+b1110 Y
+b1101 X
+b1100 W
+b1011 V
+b1010 U
+b1001 T
+b1000 S
+b111 R
+b110 Q
+b101 P
+b100 O
+b11 N
+b10 M
+b1 L
+b0 I
+b100000 H
+b100000 G
+b100000 F
+b0 E
+b100000 D
+b110 C
+b100000 %
+b110 $
+$end
+#0
+$dumpvars
+0K
+b0 J
+b0 B
+b0 A
+b0 @
+b0 ?
+b0 >
+b0 =
+b0 <
+b0 ;
+b0 :
+b0 9
+b0 8
+b0 7
+b1 6
+b1 5
+b0 4
+b0 3
+b0 2
+01
+00
+b0 /
+b0 .
+b0 -
+b0 ,
+0+
+0*
+b0 )
+b1 (
+b1 '
+0&
+b0 #
+b0 "
+b0 !
+$end
+#5000
+1&
+#10000
+0&
+#15000
+1&
+#20000
+0&
+#25000
+1&
+#30000
+0&
+#35000
+1*
+1&
+#40000
+0&
+#45000
+1&
+#50000
+b10 ?
+10
+b100000000000000 .
+b100000000000000 <
+b1 8
+b1 ,
+b1 9
+0&
+#55000
+b100000000000000 #
+b100000000000000 B
+b100000000000000 "
+b100000000000000 A
+b10000000000000000000000000000000000000000000000 J
+1&
+#56000
+b0 ?
+b0 .
+b0 <
+00
+#60000
+0&
+#65000
+1&
+#66000
+b1 3
+#70000
+b100 ?
+10
+b10101010101010101010101010101010 .
+b10101010101010101010101010101010 <
+b10 8
+b10 ,
+b10 9
+0&
+#75000
+b101010101010101010101010101010100000000000000000010000000000000000000000000000000000000000000000 J
+1&
+#76000
+b0 ?
+b0 .
+b0 <
+00
+#80000
+b100000 ?
+10
+b11001010111111100000000000000001 .
+b11001010111111100000000000000001 <
+b101 8
+b101 ,
+b101 9
+0&
+#85000
+b110010101111111000000000000000010000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010100000000000000000010000000000000000000000000000000000000000000000 J
+1&
+#86000
+b0 ?
+b0 .
+b0 <
+00
+#90000
+b10000000000000000000000000000 ?
+10
+b10010001101000101011001111000 .
+b10010001101000101011001111000 <
+b11100 8
+b11100 ,
+b11100 9
+0&
+#95000
+b1001000110100010101100111100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000110010101111111000000000000000010000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010100000000000000000010000000000000000000000000000000000000000000000 J
+1&
+#96000
+b0 ?
+b0 .
+b0 <
+00
+#100000
+0&
+#105000
+1&
+#106000
+b10 3
+#110000
+b10000000000000000000000000000 ?
+10
+b11111110111011011111101011001110 .
+b11111110111011011111101011001110 <
+0&
+#115000
+b11011110101011010000000000000000 "
+b11011110101011010000000000000000 A
+b11011110101011010000000000000000 #
+b11011110101011010000000000000000 B
+b1111111011101101111110101100111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000110010101111111000000000000000010000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010100000000000000000010000000000000000000000000000000000000000000000 J
+1K
+1&
+#116000
+b0 ?
+b0 .
+b0 <
+00
+#120000
+0&
+#125000
+1&
+#130000
+0&
+#135000
+1&
+#136000
+b11 3
+#140000
+0&
+#145000
+1&
+#146000
+b10101010101010101010101010101010 #
+b10101010101010101010101010101010 B
+b10 '
+b10 5
+b100 3
+#150000
+0&
+#155000
+1&
+#156000
+b11001010111111100000000000000001 #
+b11001010111111100000000000000001 B
+b101 '
+b101 5
+b101 3
+#160000
+0&
+#165000
+1&
+#166000
+b110 3
+#170000
+b10 ?
+10
+b1000000000000000 .
+b1000000000000000 <
+b1 8
+b1 ,
+b1 9
+0&
+#175000
+b1111111011101101111110101100111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000110010101111111000000000000000010000000000000000000000000000000000000000000000000000000000000000101010101010101010101010101010100000000000000000100000000000000000000000000000000000000000000000 J
+1&
+#176000
+b11011110101011010000000000000000 #
+b11011110101011010000000000000000 B
+b0 ?
+b1 '
+b1 5
+b0 .
+b0 <
+00
+#180000
+0&
+#185000
+1&
+#186000
+b111 3
+#190000
+0&
+#195000
+1&
+#200000
+0&
+#205000
+1&
+#210000
+0&
+#215000
+1&
+#220000
+0&
+#225000
+1&

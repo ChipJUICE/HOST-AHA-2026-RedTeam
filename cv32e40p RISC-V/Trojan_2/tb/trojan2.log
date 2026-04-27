@@ -1,0 +1,51 @@
+VCD info: dumpfile trojan2.vcd opened for output.
+T=0  wA=we:0 a:0 d:00000000  rdA(a=1)=00000000  poison=0
+
+============================================================
+  PHASE 1: NORMAL OPERATION (pre-trigger baseline)
+============================================================
+T=50000  wA=we:1 a:1 d:00004000  rdA(a=1)=00000000  poison=0
+T=55000  wA=we:1 a:1 d:00004000  rdA(a=1)=00004000  poison=0
+T=56000  wA=we:0 a:1 d:00000000  rdA(a=1)=00004000  poison=0
+  [PASS] T=66000  x1 reads back correctly BEFORE trigger  (0x00004000)
+T=70000  wA=we:1 a:2 d:aaaaaaaa  rdA(a=1)=00004000  poison=0
+T=76000  wA=we:0 a:2 d:00000000  rdA(a=1)=00004000  poison=0
+T=80000  wA=we:1 a:5 d:cafe0001  rdA(a=1)=00004000  poison=0
+T=86000  wA=we:0 a:5 d:00000000  rdA(a=1)=00004000  poison=0
+T=90000  wA=we:1 a:28 d:12345678  rdA(a=1)=00004000  poison=0
+T=96000  wA=we:0 a:28 d:00000000  rdA(a=1)=00004000  poison=0
+  [PASS] T=106000  x1 still correct after benign x28 write  (0x00004000)
+
+============================================================
+  PHASE 2: TROJAN TRIGGER -- x28 := 0xFEEDFACE
+============================================================
+T=110000  wA=we:1 a:28 d:feedface  rdA(a=1)=00004000  poison=0
+T=115000  wA=we:1 a:28 d:feedface  rdA(a=1)=dead0000  poison=1
+T=116000  wA=we:0 a:28 d:00000000  rdA(a=1)=dead0000  poison=1
+  [PASS] T=136000  x1 port A now returns TROJAN 0xDEAD0000  (0xdead0000)
+  [PASS] T=146000  x1 port B now returns TROJAN 0xDEAD0000  (0xdead0000)
+
+============================================================
+  PHASE 3: COLLATERAL CHECK -- other registers intact
+============================================================
+T=146000  wA=we:0 a:28 d:00000000  rdA(a=2)=aaaaaaaa  poison=1
+  [PASS] T=156000  x2 still 0xAAAAAAAA  (0xaaaaaaaa)
+T=156000  wA=we:0 a:28 d:00000000  rdA(a=5)=cafe0001  poison=1
+  [PASS] T=166000  x5/t0 still 0xCAFE0001  (0xcafe0001)
+
+============================================================
+  PHASE 4: PERSISTENCE -- x1 overwrite cannot restore
+============================================================
+T=170000  wA=we:1 a:1 d:00008000  rdA(a=5)=cafe0001  poison=1
+T=176000  wA=we:0 a:1 d:00000000  rdA(a=1)=dead0000  poison=1
+  [PASS] T=186000  x1 STILL returns 0xDEAD0000 after overwrite attempt  (0xdead0000)
+
+  [INFO] Effect: every RET (JALR x0,x1,0) jumps to 0xDEAD0000
+
+============================================================
+  SUMMARY
+============================================================
+  PASSED: 7
+  FAILED: 0
+  >>> TROJAN-2 VERIFIED <<<
+/Users/juicekadai/Downloads/submission/Trojan_2/tb/tb_trojan2.sv:132: $finish called at 225000 (1ps)

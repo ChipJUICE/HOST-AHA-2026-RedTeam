@@ -1,0 +1,546 @@
+$date
+	Mon Apr 20 20:19:38 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_trojan3_store_corruption $end
+$var wire 1 ! p_elw_start_o $end
+$var wire 1 " p_elw_finish_o $end
+$var wire 1 # lsu_ready_wb_o $end
+$var wire 1 $ lsu_ready_ex_o $end
+$var wire 1 % data_we_o $end
+$var wire 32 & data_wdata_o [31:0] $end
+$var wire 1 ' data_req_o $end
+$var wire 32 ( data_rdata_ex_o [31:0] $end
+$var wire 1 ) data_misaligned_o $end
+$var wire 4 * data_be_o [3:0] $end
+$var wire 6 + data_atop_o [5:0] $end
+$var wire 32 , data_addr_o [31:0] $end
+$var wire 1 - busy_o $end
+$var reg 1 . addr_useincr_ex_i $end
+$var reg 32 / captured [31:0] $end
+$var reg 1 0 clk $end
+$var reg 6 1 data_atop_ex_i [5:0] $end
+$var reg 1 2 data_err_i $end
+$var reg 1 3 data_err_pmp_i $end
+$var reg 1 4 data_gnt_i $end
+$var reg 1 5 data_load_event_ex_i $end
+$var reg 1 6 data_misaligned_ex_i $end
+$var reg 32 7 data_rdata_i [31:0] $end
+$var reg 2 8 data_reg_offset_ex_i [1:0] $end
+$var reg 1 9 data_req_ex_i $end
+$var reg 1 : data_rvalid_i $end
+$var reg 2 ; data_sign_ext_ex_i [1:0] $end
+$var reg 2 < data_type_ex_i [1:0] $end
+$var reg 32 = data_wdata_ex_i [31:0] $end
+$var reg 1 > data_we_ex_i $end
+$var reg 32 ? operand_a_ex_i [31:0] $end
+$var reg 32 @ operand_b_ex_i [31:0] $end
+$var reg 1 A rst_n $end
+$var integer 32 B fail_count [31:0] $end
+$var integer 32 C pass_count [31:0] $end
+$scope module dut $end
+$var wire 1 . addr_useincr_ex_i $end
+$var wire 1 - busy_o $end
+$var wire 1 0 clk $end
+$var wire 1 D count_down $end
+$var wire 1 E count_up $end
+$var wire 1 F ctrl_update $end
+$var wire 6 G data_atop_ex_i [5:0] $end
+$var wire 1 2 data_err_i $end
+$var wire 1 3 data_err_pmp_i $end
+$var wire 1 4 data_gnt_i $end
+$var wire 1 5 data_load_event_ex_i $end
+$var wire 1 6 data_misaligned_ex_i $end
+$var wire 32 H data_rdata_i [31:0] $end
+$var wire 2 I data_reg_offset_ex_i [1:0] $end
+$var wire 1 9 data_req_ex_i $end
+$var wire 1 : data_rvalid_i $end
+$var wire 2 J data_sign_ext_ex_i [1:0] $end
+$var wire 2 K data_type_ex_i [1:0] $end
+$var wire 32 L data_wdata_ex_i [31:0] $end
+$var wire 1 > data_we_ex_i $end
+$var wire 1 M load_err_o $end
+$var wire 1 N misaligned_st $end
+$var wire 32 O operand_a_ex_i [31:0] $end
+$var wire 32 P operand_b_ex_i [31:0] $end
+$var wire 1 " p_elw_finish_o $end
+$var wire 1 ! p_elw_start_o $end
+$var wire 1 A rst_n $end
+$var wire 1 Q store_err_o $end
+$var wire 6 R trans_atop [5:0] $end
+$var wire 4 S trans_be [3:0] $end
+$var wire 1 T trans_we $end
+$var wire 2 U wdata_offset [1:0] $end
+$var wire 32 V trans_wdata [31:0] $end
+$var wire 1 W trans_valid $end
+$var wire 1 X trans_ready $end
+$var wire 32 Y trans_addr [31:0] $end
+$var wire 1 Z resp_valid $end
+$var wire 32 [ resp_rdata [31:0] $end
+$var wire 1 \ resp_err $end
+$var wire 1 # lsu_ready_wb_o $end
+$var wire 1 $ lsu_ready_ex_o $end
+$var wire 1 % data_we_o $end
+$var wire 32 ] data_wdata_o [31:0] $end
+$var wire 1 ' data_req_o $end
+$var wire 32 ^ data_rdata_ex_o [31:0] $end
+$var wire 4 _ data_be_o [3:0] $end
+$var wire 6 ` data_atop_o [5:0] $end
+$var wire 32 a data_addr_o [31:0] $end
+$var wire 32 b data_addr_int [31:0] $end
+$var parameter 32 c DEPTH $end
+$var parameter 32 d PULP_OBI $end
+$var reg 2 e cnt_q [1:0] $end
+$var reg 4 f data_be [3:0] $end
+$var reg 1 g data_load_event_q $end
+$var reg 1 ) data_misaligned_o $end
+$var reg 32 h data_rdata_ext [31:0] $end
+$var reg 2 i data_sign_ext_q [1:0] $end
+$var reg 2 j data_type_q [1:0] $end
+$var reg 32 k data_wdata [31:0] $end
+$var reg 1 l data_we_q $end
+$var reg 2 m next_cnt [1:0] $end
+$var reg 32 n rdata_b_ext [31:0] $end
+$var reg 32 o rdata_h_ext [31:0] $end
+$var reg 2 p rdata_offset_q [1:0] $end
+$var reg 32 q rdata_q [31:0] $end
+$var reg 32 r rdata_w_ext [31:0] $end
+$scope begin gen_no_pulp_obi $end
+$upscope $end
+$scope module data_obi_i $end
+$var wire 1 0 clk $end
+$var wire 1 s next_state $end
+$var wire 1 2 obi_err_i $end
+$var wire 1 4 obi_gnt_i $end
+$var wire 32 t obi_rdata_i [31:0] $end
+$var wire 1 : obi_rvalid_i $end
+$var wire 1 \ resp_err_o $end
+$var wire 32 u resp_rdata_o [31:0] $end
+$var wire 1 Z resp_valid_o $end
+$var wire 1 A rst_n $end
+$var wire 1 v state_q $end
+$var wire 32 w trans_addr_i [31:0] $end
+$var wire 6 x trans_atop_i [5:0] $end
+$var wire 4 y trans_be_i [3:0] $end
+$var wire 32 z trans_wdata_i [31:0] $end
+$var wire 1 T trans_we_i $end
+$var wire 1 W trans_valid_i $end
+$var wire 1 X trans_ready_o $end
+$var wire 1 % obi_we_o $end
+$var wire 32 { obi_wdata_o [31:0] $end
+$var wire 1 ' obi_req_o $end
+$var wire 4 | obi_be_o [3:0] $end
+$var wire 6 } obi_atop_o [5:0] $end
+$var wire 32 ~ obi_addr_o [31:0] $end
+$var parameter 32 !" TRANS_STABLE $end
+$scope begin gen_trans_stable $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope task banner $end
+$upscope $end
+$scope task check32 $end
+$upscope $end
+$scope task do_store $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1 !"
+b0 d
+b10 c
+$end
+#0
+$dumpvars
+b0 ~
+b0 }
+b1111 |
+b0 {
+b0 z
+b1111 y
+b0 x
+b0 w
+0v
+b0 u
+b0 t
+0s
+b0 r
+b0 q
+b0 p
+b0 o
+b0 n
+b0 m
+0l
+b0 k
+b0 j
+b0 i
+b0 h
+0g
+b1111 f
+b0 e
+b0 b
+b0 a
+b0 `
+b1111 _
+b0 ^
+b0 ]
+0\
+b0 [
+0Z
+b0 Y
+1X
+0W
+b0 V
+b0 U
+0T
+b1111 S
+b0 R
+0Q
+b0 P
+b0 O
+0N
+0M
+b0 L
+b0 K
+b0 J
+b0 I
+b0 H
+b0 G
+0F
+0E
+0D
+b0 C
+b0 B
+0A
+b0 @
+b0 ?
+0>
+b0 =
+b0 <
+b0 ;
+0:
+09
+b0 8
+b0 7
+06
+05
+14
+03
+02
+b0 1
+00
+bx /
+0.
+0-
+b0 ,
+b0 +
+b1111 *
+0)
+b0 (
+0'
+b0 &
+0%
+1$
+1#
+0"
+0!
+$end
+#5000
+10
+#10000
+00
+#15000
+10
+#20000
+00
+#25000
+10
+#30000
+00
+#35000
+1A
+10
+#40000
+00
+#45000
+10
+#50000
+b1 m
+1$
+1E
+1-
+b11011110101011010001001000110100 &
+b11011110101011010001001000110100 ]
+b11011110101011010001001000110100 {
+b11011110101011010001001000110100 V
+b11011110101011010001001000110100 z
+b10000000000000000000000000000 ,
+b10000000000000000000000000000 a
+b10000000000000000000000000000 ~
+b10000000000000000000000000000 Y
+b10000000000000000000000000000 w
+1F
+1'
+1W
+b11011110101011010001001000110100 k
+b10000000000000000000000000000 b
+19
+1%
+1T
+1>
+b11011110101011010001001000110100 =
+b11011110101011010001001000110100 L
+b10000000000000000000000000000 ?
+b10000000000000000000000000000 O
+00
+#55000
+0F
+0$
+b10 m
+0#
+1l
+b1 e
+10
+#56000
+b1 m
+1$
+0E
+0'
+0W
+0%
+0T
+0>
+09
+#60000
+00
+#65000
+10
+#66000
+b1 C
+b11011110101011010001001000110100 /
+#70000
+b10 m
+0$
+1E
+b10000000000000000000010100000 ,
+b10000000000000000000010100000 a
+b10000000000000000000010100000 ~
+b10000000000000000000010100000 Y
+b10000000000000000000010100000 w
+0F
+1'
+1W
+b10000000000000000000010100000 b
+19
+1%
+1T
+1>
+b10000000000000000000010100000 ?
+b10000000000000000000010100000 O
+00
+#75000
+0E
+0'
+0W
+b10 m
+b10 e
+10
+#76000
+1$
+0%
+0T
+0>
+09
+#80000
+00
+#85000
+10
+#86000
+b10 C
+#90000
+0$
+b11011110101011011011111011101111 &
+b11011110101011011011111011101111 ]
+b11011110101011011011111011101111 {
+b11011110101011011011111011101111 V
+b11011110101011011011111011101111 z
+b10000000000000000000000000000 ,
+b10000000000000000000000000000 a
+b10000000000000000000000000000 ~
+b10000000000000000000000000000 Y
+b10000000000000000000000000000 w
+0F
+b11011110101011011011111011101111 k
+b10000000000000000000000000000 b
+19
+1%
+1T
+1>
+b11011110101011011011111011101111 =
+b11011110101011011011111011101111 L
+b10000000000000000000000000000 ?
+b10000000000000000000000000000 O
+00
+#95000
+10
+#96000
+1$
+0%
+0T
+0>
+09
+#100000
+00
+#105000
+10
+#106000
+b11 C
+b11011110101011011011111011101111 /
+#110000
+b11011110101011011011111000010000 &
+b11011110101011011011111000010000 ]
+b11011110101011011011111000010000 {
+b11011110101011011011111000010000 V
+b11011110101011011011111000010000 z
+0$
+b100000000000000000000010100000 ,
+b100000000000000000000010100000 a
+b100000000000000000000010100000 ~
+b100000000000000000000010100000 Y
+b100000000000000000000010100000 w
+0F
+b100000000000000000000010100000 b
+19
+1%
+1T
+1>
+b100000000000000000000010100000 ?
+b100000000000000000000010100000 O
+00
+#115000
+10
+#116000
+b11011110101011011011111011101111 &
+b11011110101011011011111011101111 ]
+b11011110101011011011111011101111 {
+b11011110101011011011111011101111 V
+b11011110101011011011111011101111 z
+1$
+0%
+0T
+0>
+09
+#120000
+00
+#125000
+10
+#126000
+b100 C
+b11011110101011011011111000010000 /
+#130000
+0$
+b11001010111111101011111010111101 &
+b11001010111111101011111010111101 ]
+b11001010111111101011111010111101 {
+b11001010111111101011111010111101 V
+b11001010111111101011111010111101 z
+b1000010100000 ,
+b1000010100000 a
+b1000010100000 ~
+b1000010100000 Y
+b1000010100000 w
+0F
+b11001010111111101011111001000010 k
+b1000010100000 b
+19
+1%
+1T
+1>
+b11001010111111101011111001000010 =
+b11001010111111101011111001000010 L
+b1000010100000 ?
+b1000010100000 O
+00
+#135000
+10
+#136000
+b11001010111111101011111001000010 &
+b11001010111111101011111001000010 ]
+b11001010111111101011111001000010 {
+b11001010111111101011111001000010 V
+b11001010111111101011111001000010 z
+1$
+0%
+0T
+0>
+09
+#140000
+00
+#145000
+10
+#146000
+b101 C
+b11001010111111101011111010111101 /
+#150000
+0$
+b11011110101011011011111000010000 &
+b11011110101011011011111000010000 ]
+b11011110101011011011111000010000 {
+b11011110101011011011111000010000 V
+b11011110101011011011111000010000 z
+b100000000000000000000010100000 ,
+b100000000000000000000010100000 a
+b100000000000000000000010100000 ~
+b100000000000000000000010100000 Y
+b100000000000000000000010100000 w
+0F
+b11011110101011011011111011101111 k
+b100000000000000000000010100000 b
+19
+1%
+1T
+1>
+b11011110101011011011111011101111 =
+b11011110101011011011111011101111 L
+b100000000000000000000010100000 ?
+b100000000000000000000010100000 O
+00
+#155000
+10
+#156000
+b11011110101011011011111011101111 &
+b11011110101011011011111011101111 ]
+b11011110101011011011111011101111 {
+b11011110101011011011111011101111 V
+b11011110101011011011111011101111 z
+1$
+0%
+0T
+0>
+09
+#160000
+00
+#165000
+10
+#170000
+00
+#175000
+10
+#180000
+00
+#185000
+10
+#190000
+00
+#195000
+10
+#200000
+00
+#205000
+10
